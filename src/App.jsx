@@ -1,5 +1,6 @@
 import { useState } from "react";
-import Header from "./componenet/header";
+import Header from "./componenet/Header";
+import Main from "./componenet/Main";
 import "./App.css";
 
 function App() {
@@ -7,7 +8,8 @@ function App() {
 
   return (
     <>
-      <Header></Header>
+      <Header />
+      <Main />
     </>
   );
 }
