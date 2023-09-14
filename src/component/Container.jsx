@@ -13,8 +13,12 @@ const Container = () => {
       .then((data) => setBlogs(data));
   }, []);
 
-  const handleMarkAsRead = (time) => {
+  const handleMarkAsRead = (id, time) => {
     setReadingTime(readingTime + time);
+    const remainingBookmarks = bookmarks.filter(
+      (bookmark) => bookmark.id !== id
+    );
+    setBookmarks(remainingBookmarks);
   };
 
   const handleBookmark = (blog) => {
@@ -53,8 +57,8 @@ const Container = () => {
 
             {/* Bookmarks */}
             <div className="space-y-4">
-              {bookmarks.map((blogTitle, idx) => (
-                <Bookmark key={idx} blogTitle={blogTitle} />
+              {bookmarks.map((bookmark, idx) => (
+                <Bookmark key={idx} bookmark={bookmark.title} />
               ))}
             </div>
           </div>

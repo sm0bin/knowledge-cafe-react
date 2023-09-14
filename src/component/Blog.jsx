@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 
 const Blog = ({ blog, handleMarkAsRead, handleBookmark }) => {
   const {
+    id,
     cover,
     title,
     author_img,
@@ -28,7 +29,7 @@ const Blog = ({ blog, handleMarkAsRead, handleBookmark }) => {
         </div>
         <div className="flex gap-2">
           <p>{reading_time} min read</p>
-          <button onClick={() => handleBookmark(title)}>
+          <button onClick={() => handleBookmark(blog)}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -56,7 +57,7 @@ const Blog = ({ blog, handleMarkAsRead, handleBookmark }) => {
         ))}
       </p>
       <button
-        onClick={() => handleMarkAsRead(reading_time)}
+        onClick={() => handleMarkAsRead(id, reading_time)}
         className="text-xl font-semibold text-violet-600 underline underline-offset-2 hover:text-violet-800"
       >
         Mark as read
