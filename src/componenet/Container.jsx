@@ -1,24 +1,27 @@
 import React, { useEffect, useState } from "react";
 import Blog from "./Blog";
 
-const Main = () => {
+const Container = () => {
   const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
     fetch("../../public/blogs.json")
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => setBlogs(data));
   }, []);
+  // console.log(blogs);
 
   return (
     <main className=" max-w-7xl mx-auto ">
-      <hr className="my-8" />
       <div className="grid grid-cols-3 gap-6">
         <div className="col-span-2">
-          <Blog />
+          {blogs.map((blog) => (
+            <Blog key={blog.id} blog={blog} />
+          ))}
         </div>
-        <div className="shrink">
-          <div className="py-5 text-center bg-purple-100 border border-purple-500 rounded-lg">
+
+        <div>
+          <div className="py-5 text-center bg-violet-100 border border-violet-500 rounded-lg">
             <h2>Spent time on read : 177 min</h2>
           </div>
         </div>
@@ -27,4 +30,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default Container;

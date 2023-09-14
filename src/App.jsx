@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Header from "./componenet/Header";
-import Main from "./componenet/Main";
+import Container from "./componenet/Container";
 import "./App.css";
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <Header />
-      <Main />
+      <Container />
     </>
   );
 }
