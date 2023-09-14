@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const Blog = ({ blog }) => {
   const {
@@ -59,6 +60,10 @@ const Blog = ({ blog }) => {
       <hr className="mt-9 mb-10" />
     </article>
   );
+};
+
+Blog.propTypes = {
+  blog: PropTypes.object.isRequired,
 };
 
 export default Blog;
