@@ -1,4 +1,3 @@
-import React from "react";
 import PropTypes from "prop-types";
 
 const Blog = ({ blog, handleMarkAsRead, handleBookmark }) => {
@@ -11,7 +10,7 @@ const Blog = ({ blog, handleMarkAsRead, handleBookmark }) => {
     reading_time,
     hashtags,
   } = blog;
-  // console.log(blog);
+
   return (
     <article>
       <img className="w-full rounded-lg mb-9" src={cover} alt="" />
