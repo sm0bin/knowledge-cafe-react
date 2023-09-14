@@ -8,7 +8,7 @@ const Container = () => {
   const [bookmarks, setBookmarks] = useState([]);
 
   useEffect(() => {
-    fetch("../../public/blogs.json")
+    fetch("blogs.json")
       .then((res) => res.json())
       .then((data) => setBlogs(data));
   }, []);

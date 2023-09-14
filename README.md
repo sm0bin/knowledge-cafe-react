@@ -17,4 +17,4 @@ Knowledge Cafe is a simple yet elegant blog website built using React and styled
 
 ## Live Website
 
-You can visit the live version of Knowledge Cafe at the following link: [Knowledge Cafe - Live Website](https://www.example.com)
+You can visit the live version of Knowledge Cafe at the following link: [Knowledge Cafe - Live Website](knowledge-cafe-sm.surge.sh)
