@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Blog = ({ blog }) => {
+const Blog = ({ blog, handleMarkAsRead, handleBookmark }) => {
   const {
     cover,
     title,
@@ -29,20 +29,22 @@ const Blog = ({ blog }) => {
         </div>
         <div className="flex gap-2">
           <p>{reading_time} min read</p>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            stroke="currentColor"
-            className="w-6 h-6 hover:fill-current cursor-pointer"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z"
-            />
-          </svg>
+          <button onClick={() => handleBookmark(title)}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              stroke="currentColor"
+              className="w-6 h-6 hover:fill-current cursor-pointer"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z"
+              />
+            </svg>
+          </button>
         </div>
       </div>
 
@@ -54,7 +56,10 @@ const Blog = ({ blog }) => {
           </span>
         ))}
       </p>
-      <button className="text-xl font-semibold text-violet-600 underline underline-offset-2 hover:text-violet-800">
+      <button
+        onClick={() => handleMarkAsRead(reading_time)}
+        className="text-xl font-semibold text-violet-600 underline underline-offset-2 hover:text-violet-800"
+      >
         Mark as read
       </button>
       <hr className="mt-9 mb-10" />
@@ -64,6 +69,8 @@ const Blog = ({ blog }) => {
 
 Blog.propTypes = {
   blog: PropTypes.object.isRequired,
+  handleMarkAsRead: PropTypes.func,
+  handleBookmark: PropTypes.func,
 };
 
 export default Blog;

@@ -4,13 +4,23 @@ import Bookmark from "./Bookmark";
 
 const Container = () => {
   const [blogs, setBlogs] = useState([]);
+  const [readingTime, setReadingTime] = useState(0);
+  const [bookmarks, setBookmarks] = useState([]);
 
   useEffect(() => {
     fetch("../../public/blogs.json")
       .then((res) => res.json())
       .then((data) => setBlogs(data));
   }, []);
-  // console.log(blogs);
+
+  const handleMarkAsRead = (time) => {
+    setReadingTime(readingTime + time);
+  };
+
+  const handleBookmark = (blog) => {
+    const newBookmarks = [...bookmarks, blog];
+    setBookmarks(newBookmarks);
+  };
 
   return (
     <main className=" max-w-7xl mx-auto ">
@@ -18,7 +28,12 @@ const Container = () => {
         {/* Blogs */}
         <div className="col-span-2">
           {blogs.map((blog) => (
-            <Blog key={blog.id} blog={blog} />
+            <Blog
+              key={blog.id}
+              blog={blog}
+              handleMarkAsRead={handleMarkAsRead}
+              handleBookmark={handleBookmark}
+            />
           ))}
         </div>
 
@@ -26,17 +41,21 @@ const Container = () => {
           {/* Spent Time */}
           <div className="py-5 text-center bg-violet-100 border-2 border-violet-500 rounded-lg mb-6">
             <h2 className="font-bold text-2xl text-indigo-600">
-              Spent time on read : 177 min
+              Spent time on read : {readingTime} min
             </h2>
           </div>
 
           {/* Bookmarks Field */}
           <div className="p-8 bg-gray-100 rounded-lg">
-            <h2 className="font-bold text-2xl mb-4">Bookmarked Blogs : 8</h2>
+            <h2 className="font-bold text-2xl mb-4">
+              Bookmarked Blogs : {bookmarks.length}
+            </h2>
 
             {/* Bookmarks */}
-            <div className="flex flex-col gap-4">
-              <Bookmark />
+            <div className="space-y-4">
+              {bookmarks.map((blogTitle, idx) => (
+                <Bookmark key={idx} blogTitle={blogTitle} />
+              ))}
             </div>
           </div>
         </aside>
