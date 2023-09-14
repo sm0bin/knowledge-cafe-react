@@ -27,8 +27,8 @@ const Container = () => {
   };
 
   return (
-    <main className=" max-w-7xl mx-auto ">
-      <div className="grid grid-cols-3 gap-6">
+    <main className=" max-w-7xl mx-6 xl:mx-auto mb-10">
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-0 xl:gap-6">
         {/* Blogs */}
         <div className="col-span-2">
           {blogs.map((blog) => (
