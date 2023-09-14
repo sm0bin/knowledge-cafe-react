@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Blog from "./Blog";
+import Bookmark from "./Bookmark";
 
 const Container = () => {
   const [blogs, setBlogs] = useState([]);
@@ -14,31 +15,31 @@ const Container = () => {
   return (
     <main className=" max-w-7xl mx-auto ">
       <div className="grid grid-cols-3 gap-6">
+        {/* Blogs */}
         <div className="col-span-2">
           {blogs.map((blog) => (
             <Blog key={blog.id} blog={blog} />
           ))}
         </div>
 
-        <div className="flex flex-col gap-4">
+        <aside>
+          {/* Spent Time */}
           <div className="py-5 text-center bg-violet-100 border-2 border-violet-500 rounded-lg mb-6">
             <h2 className="font-bold text-2xl text-indigo-600">
               Spent time on read : 177 min
             </h2>
           </div>
+
+          {/* Bookmarks Field */}
           <div className="p-8 bg-gray-100 rounded-lg">
-            <h2 className="font-bold text-2xl mb-4">
-              Spent time on read : 177 min
-            </h2>
+            <h2 className="font-bold text-2xl mb-4">Bookmarked Blogs : 8</h2>
+
+            {/* Bookmarks */}
             <div className="flex flex-col gap-4">
-              <div className="p-5 bg-white rounded-lg">
-                <h3 className="font-semibold text-lg">
-                  Master Microsoft Power Platform and Become an In-Demand!
-                </h3>
-              </div>
+              <Bookmark />
             </div>
           </div>
-        </div>
+        </aside>
       </div>
     </main>
   );
