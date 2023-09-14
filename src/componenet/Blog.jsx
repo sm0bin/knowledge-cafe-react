@@ -6,9 +6,9 @@ const Blog = ({ blog }) => {
     title,
     author_img,
     author,
-    posted_data,
+    posted_date,
     reading_time,
-    hastags,
+    hashtags,
   } = blog;
   // console.log(blog);
   return (
@@ -23,7 +23,7 @@ const Blog = ({ blog }) => {
           />
           <div>
             <h3 className="text-2xl font-bold">{author}</h3>
-            <h4>{posted_data} (4 Days ago)</h4>
+            <h4>{posted_date} (4 Days ago)</h4>
           </div>
         </div>
         <div className="flex gap-2">
@@ -34,7 +34,7 @@ const Blog = ({ blog }) => {
             viewBox="0 0 24 24"
             strokeWidth="1.5"
             stroke="currentColor"
-            className="w-6 h-6"
+            className="w-6 h-6 hover:fill-current cursor-pointer"
           >
             <path
               strokeLinecap="round"
@@ -47,8 +47,11 @@ const Blog = ({ blog }) => {
 
       <h1 className="font-bold text-4xl">{title}</h1>
       <p className="mt-4 mb-5 flex gap-4">
-        <span>#beginners</span>
-        <span>#programming</span>
+        {hashtags.map((hashtag, index) => (
+          <span key={index}>
+            <a href="#">#{hashtag}</a>
+          </span>
+        ))}
       </p>
       <button className="text-xl font-semibold text-violet-600 underline underline-offset-2 hover:text-violet-800">
         Mark as read
